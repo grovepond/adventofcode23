@@ -20,7 +20,6 @@ import Util
         }
         return result.toString()
     }
-
     fun solvePart2 (data: List<String>): String {
         var result = 0
         data.forEach { line ->
