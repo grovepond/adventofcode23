@@ -1,9 +1,9 @@
 package day1
 
-import Util
+import com.grovepond.aoc23.Util
 
     fun main() {
-        val input = "input/" + object{}.javaClass.enclosingClass.packageName + ".txt"
+        val input = "input/" + object {}.javaClass.enclosingClass.packageName + ".txt"
 
         val data = Util.readInput(input)
         println(solvePart1(data))
@@ -11,7 +11,7 @@ import Util
 
     }
 
-    fun solvePart1 (data: List<String>): String {
+    fun solvePart1(data: List<String>): String {
         var result = 0
 
         data.forEach { line ->
@@ -20,7 +20,8 @@ import Util
         }
         return result.toString()
     }
-    fun solvePart2 (data: List<String>): String {
+
+    fun solvePart2(data: List<String>): String {
         var result = 0
         data.forEach { line ->
             var tmp = line.replace("one", "o1e")
@@ -38,7 +39,8 @@ import Util
         }
         return result.toString()
     }
-    fun getFirstLastDigitNumber (line: String): String{
+
+    fun getFirstLastDigitNumber(line: String): String {
         val firstDigit = line.filter { it.isDigit() }.first().toString()
         val lastDigit = line.filter { it.isDigit() }.last().toString()
         val number = firstDigit + lastDigit
