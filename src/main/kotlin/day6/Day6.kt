@@ -13,23 +13,24 @@ fun main() {
 class Day6 {
 
     fun solvePart1 (input: List<String>): String {
-        val times = input[0].split(Regex("\\D+")).filter{it.isNotEmpty()}.map{it.toInt()}
-        val distances = input[1].split(Regex("\\D+")).filter{it.isNotEmpty()}.map{it.toInt()}
+        val times = input[0].split(Regex("\\D+")).filter{it.isNotEmpty()}.map{it.toLong()}
+        val distances = input[1].split(Regex("\\D+")).filter{it.isNotEmpty()}.map{it.toLong()}
         return calculateWins(times, distances).toString()
     }
 
-    fun solvePart2 (data: List<String>): String {
-        var result = ""
-
-        return result
+    fun solvePart2 (input: List<String>): String {
+        val times = listOf(input[0].replace(Regex("[^\\d]"), "").toLong())
+        val distances = listOf(input[1].replace(Regex("[^\\d]"), "").toLong())
+        return calculateWins(times, distances).toString()
     }
 
-   fun calculateWins(times: List<Int>, distances: List<Int>): Int {
+   fun calculateWins(times: List<Long>, distances: List<Long>): Long {
         return times
             .zip(distances)
             .map { (time, distance) ->
                 (0 until time).count { i -> i * (time - i) > distance }
             }
+            .map { it.toLong() }
             .reduce { acc, value -> acc * value }
     }
 
